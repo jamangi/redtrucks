@@ -7,8 +7,11 @@
 import cmd
 import csv
 from datetime import datetime
-import requests
 import shlex
+
+import requests
+
+import logistics
 
 # url = "http://data.sfgov.org/resource/bbb8-hzi6.json"
 
@@ -26,7 +29,7 @@ class RedTrucksCommand(cmd.Cmd):
     def __init__(self):
         self.url = "http://data.sfgov.org/resource/bbb8-hzi6.json"
         self.csv = "redtrucks.csv"
-        self.support = "https://github.com/GucciGerm/Anime-Animation/blob/master/eyes.css"
+        self.support = "https://github.com/jamangi/redtrucks"
         self.data = []
         self.index = 0
         response = requests.get(self.url)
@@ -38,7 +41,7 @@ class RedTrucksCommand(cmd.Cmd):
             if not self.load_csv():
                 print("{} not found either.\nReport bugs here: {}".format(
                     self.csv, self.support))
-
+        self.
     def do_echo(self, args):
         """
             Echo method
