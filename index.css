@@ -1,0 +1,40 @@
+* {
+    margin: 0;
+    padding: 0;
+    position: relative;
+    border-radius: 10px;
+}
+
+:root {
+    --blue: #6622CC;
+    --purple: #A755C2;
+    --lavender: #B07C9E;
+    --brown: #B59194;
+    --pink: #D2A1B8;
+}
+
+body {
+    background: var(--blue);
+    color: var(--pink);
+
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: repeat(12, 1fr);
+    grid-gap: 10px;
+}
+
+.panel {
+    height: 300px;
+    width: 300px;
+    background: var(--brown);
+    }
+
+.button {
+    height: 50px;
+    width: 150px;
+    background: var(--brown);
+}
+
+.button:hover {
+    border: 1px solid #A755C2;
+}

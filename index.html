@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="index.css">
+    <title>food trucks</title>
+</head>
+<body>
+
+<div class="button all_users" onclick="loadDoc()" id='users_button'></div>
+<div class="panel trucks" id='trucks'></div>
+<div class="panel records"></div>
+<div class="panel new"></div>
+<div class="panel timer"></div>
+<div class="panel time"></div>
+
+<script type="text/javascript">
+    
+    function loadDoc() {
+        let url = "http://data.sfgov.org/resource/bbb8-hzi6.json"
+        let xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                let obj_list = JSON.parse(this.responseText)
+                panel = document.getElementById("trucks")
+                for (let truck of obj_list) {
+                    li = document.createElement('li')
+                    li.innerHTML = truck.applicant
+                    panel.append(li)
+                }
+                
+              
+            }
+        };
+    
+        xhttp.open("GET", url, true);
+        xhttp.send();
+    }
+</script>
+
+</body>
+</html>
