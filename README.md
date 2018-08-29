@@ -1,11 +1,11 @@
-# Red Trucks
-Displays the food trucks that are open at the time you invoke the app.
+# Goal
+Display the food trucks that are open at the time the app is invoked.
 
 ## Overview
-I've prepared two versions of the application, a python version and a javascript version, and each version has its unique strengths to offer.
+I've prepared two versions of the application, a python version and a javascript version, and each version has its unique strengths to offer. Neither of them requires installation, beyond perhaps python3 and requests for the python version. The Javascript version only uses HTML, CSS, and Javascript, so the index.html file can be opened locally.
 
 ## Python
-In the python version of this app, a CSV file is used to cache the request, and that cache is relied on if we ever become unable to connect to the food trucks API. This works especially well, since the owners of the food trucks don't change their schedules up very often. The downside to this, is that there are a few extra seconds of overhead when turning on the app, as it updates the CSV file.
+In the python version of this app, a CSV file is used to cache the request, and that cache is relied on if we ever become unable to connect to the food trucks API. This works especially well, since the owners of the food trucks don't change their schedules up very often. The downside to this, is the extra seconds of overhead when turning on the app, as it updates the CSV file.
 ![console](https://github.com/jamangi/redtrucks/blob/master/images/console.gif)
 
 ## Frontend Javascript
