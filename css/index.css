@@ -40,6 +40,16 @@ body {
     width: 60px;
     background: var(--brown);
 }
+
+.button.all_users {
+    /*background: var(--pink);*/
+    /*border: 1px solid var(--purple);*/
+    left: 5px;
+    top: 5px;
+    padding-left: 8px;
+    padding-top: 8px;
+}
+
 .panel.container {
     grid-row: 2/12;
     grid-column: 1/4;
