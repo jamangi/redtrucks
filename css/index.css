@@ -111,6 +111,19 @@ body {
     box-sizing: border-box;
 }
 
+footer {
+    /*top: 3%;*/
+    grid-row: 12/13;
+    grid-column: 2/4;
+    /*left: 15%;*/
+    width: 100%;
+}
+
+footer p {
+    top: 15px;
+    width: 200px;
+    left: 15%;
+}
 
 #t1 {
     position:absolute;
