@@ -51,12 +51,12 @@ body {
     height: 100%;
     width: 800px;
     left: 30%;
-    background: url(truck-icon.png);
+    background: url(../truck-icon.png);
     background-repeat: no-repeat;
     background-position: 50% 50%;
     background-size: 800px;
 
-    border: 1px solid blue;
+    /*border: 1px solid blue;*/
 }
 
 

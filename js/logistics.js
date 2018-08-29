@@ -49,18 +49,9 @@ function back(){
 
 function populate_table(){
     let table = document.getElementById("t1")
-    console.log(data.length)
-    console.log(data)
 
-    data.push({"name": "bot", "address": "bot"})
-    data.push({"name": "bot", "address": "bot"})
-    data.push({"name": "bot", "address": "bot"})
-    data.push({"name": "bot", "address": "bot"})
-    data.push({"name": "bot", "address": "bot"})
-    data.push({"name": "bot", "address": "bot"})
-    data.push({"name": "bot", "address": "bot"})
-    data.push({"name": "bot", "address": "bot"})
-    data.push({"name": "bot", "address": "bot"})
+    if (data.length < 20)
+        dummydata()
 
     let j = index + 10
     if (j > data.length)
@@ -80,7 +71,8 @@ function populate_table(){
 
 }
 
-function ajax_call(callback){
+function ajax_call(){
+    let callback = populate_table
     let url = "http://data.sfgov.org/resource/bbb8-hzi6.json"
     let xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
@@ -158,34 +150,41 @@ function is_open(start, end){
     return false
 }
 
-function ajax_call_backup(){
-    let url = "http://data.sfgov.org/resource/bbb8-hzi6.json"
-    let xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            let obj_list = JSON.parse(this.responseText)
-            let table = document.getElementById("t1")
-            let count = 0
-            for (let truck of obj_list) {
-                let tr = document.createElement('tr')
-                let name = document.createElement('td')
-                let addr = document.createElement('td')
-                name.innerHTML = truck.applicant
-                addr.innerHTML = truck.location
-                table.append(tr)
-                tr.append(name)
-                tr.append(addr)
-                count++
-                if (count == 10)
-                    break
-            }
-            
-          
-        }
-    };
+function dummydata(){
+    data.push({"name": "offline", "address": "offline"})
+    data.push({"name": "offline", "address": "offline"})
+    data.push({"name": "offline", "address": "offline"})
+    data.push({"name": "offline", "address": "offline"})
+    data.push({"name": "offline", "address": "offline"})
+    data.push({"name": "offline", "address": "offline"})
+    data.push({"name": "offline", "address": "offline"})
+    data.push({"name": "offline", "address": "offline"})
+    data.push({"name": "offline", "address": "offline"})
+}
 
-    xhttp.open("GET", url, true);
-    xhttp.send();
+function update_clock(){
+    let x = new Date();
+    let day = x.getDay()
+    if (day < 10) day = "0" + day
+    let hour = x.getHours()
+    if (hour < 10) hour = "0" + hour
+    let minute = x.getMinutes()
+    if (minute < 10) minute = "0" + minute
+    let second = x.getSeconds()
+    if (second < 10) second = "0" + second
+
+    let year = x.getFullYear()
+    let month = x.getMonth()
+    if (month < 10) month = "0" + month
+    let monthday = x.getDate()
+    if (monthday < 10) monthday = "0" + monthday
+
+    let date_ele = document.getElementById("date")
+    let time_ele = document.getElementById("time")
+
+
+    date_ele.innerHTML = year + " - " + month + " - " + monthday
+    time_ele.innerHTML = hour + ":" + minute + ":" + second
 }
 
 let nextbutton = document.getElementById("next")
@@ -193,4 +192,7 @@ let backbutton = document.getElementById("back")
 nextbutton.addEventListener("click", next)
 backbutton.addEventListener("click", back)
 init_table()
-ajax_call(populate_table)
+ajax_call()
+update_clock()
+setInterval(update_clock, 1000)
+setInterval(ajax_call, 30000)
