@@ -1,0 +1,10 @@
+@keyframes up_and_down {
+    100%{left: 30%;}
+    75%{left: 29%;}
+    25%{left: 31%;}
+    0%{left: 30%;}
+}
+
+.panel.attraction {
+    animation: up_and_down 30s ease-in-out infinite;
+}
