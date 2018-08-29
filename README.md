@@ -9,7 +9,7 @@ In the python version of this app, a CSV file is used to cache the request, and 
 ![console](https://github.com/jamangi/redtrucks/blob/master/images/console.gif)
 
 ## Frontend Javascript
-In the Javascript version of the app, we lose the CSV cache functionality, but we gain a wonderfully appealing user interface. The app makes an AJAX call to the food trucks service every thirty seconds automatically, so it'll update the display every hour or so without us needing to lift a finger. Weaknesses include the added labor required to code the interface, and frontend Javascript also struggles with using files on the user's file system, so it is network reliant.
+In the Javascript version of the app, we lose the CSV cache functionality, but we gain a colorful user interface. The app makes an AJAX call to the food trucks service every thirty seconds automatically, so it'll update the display every hour or so without us needing to lift a finger. Weaknesses include the added labor required to code the interface, and frontend Javascript also struggles with using files on the user's file system, so it is network reliant.
 ![javascript](https://github.com/jamangi/redtrucks/blob/master/images/redtrucks.gif)
 
 ## After Thoughts
