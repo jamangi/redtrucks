@@ -48,6 +48,8 @@ function back(){
 }
 
 function populate_table(){
+    clear_table()
+    init_table()
     let table = document.getElementById("t1")
 
     if (data.length < 20)
@@ -192,7 +194,7 @@ let backbutton = document.getElementById("back")
 nextbutton.addEventListener("click", next)
 backbutton.addEventListener("click", back)
 init_table()
-ajax_call()
 update_clock()
+ajax_call()
 setInterval(update_clock, 1000)
 setInterval(ajax_call, 30000)
