@@ -13,6 +13,6 @@ In the Javascript version of the app, we lose the CSV cache functionality, but w
 ![javascript](https://github.com/jamangi/redtrucks/blob/master/images/redtrucks.gif)
 
 ## After Thoughts
-If we were to actually deploy an app like this, I think it could be best to have both a front end and back end strategy. This would be easy to coordinate with the use of API, as the front end developers could trust the web APIs, and code around possible failures, without being held up. Likewise, the backend developers could deevlop upgrades at their own pace, for example routes leading to a database system to record user food truck ratings. 
+If we were to actually deploy an app like this, I think it could be best to have both a front end and back end strategy. This would be easy to coordinate with the use of API, as the front end developers could trust the web APIs, and code around possible failures, without being held up. Likewise, the backend developers could develop upgrades at their own pace, for example routes leading to a database system to record user food truck ratings. 
 
 On the other hand, there is something magical about the simplicity of food trucks. An app like this seems to provide value to everyone with no strings attached, and I'm surprised the API data is free. A version of this could be used as an accessory app on a landing page, to act as a gift of charity to any user visiting your website, which would make your presence on the market more special and valuable.
