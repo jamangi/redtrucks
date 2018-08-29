@@ -74,6 +74,7 @@ function populate_table(){
 }
 
 function ajax_call(){
+    data = []
     let callback = populate_table
     let url = "http://data.sfgov.org/resource/bbb8-hzi6.json"
     let xhttp = new XMLHttpRequest();
