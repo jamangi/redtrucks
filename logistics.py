@@ -1,13 +1,13 @@
 """
-    module containing time calculation helper function
+    Module containing time comparison function.
 """
 from datetime import datetime
 
 
 def day_hour_minute():
     """
-        Gets the current day, hour, and minute for California
-        Will +1 to weekday to match the foodtruck api
+        Get the current day, hour, and minute for California.
+        Add 1 to weekday to match the foodtruck api.
     """
     x = datetime.now()
     day = x.weekday()
@@ -21,18 +21,17 @@ def day_hour_minute():
 
 def is_open(start, end):
     """
-        Compares start and end time of truck to our current time.
+        Check our local time against the start and closing time of a truck.
 
         Example:
-            is_open((1, "12:00"), (1, "15:00") -> returns True or False
+            is_open((1, "12:00"), (1, "15:00") -> Returns True or False.
 
-        Datetime comparison strategy:
-            If we treat time like a measuring stick,
-            in which 1 day is a meter,
-            1 hour an decimeter,
-            and 1 minute a centimeter,
-            then we can transform days, hours, and minutes into
-            unified magnitudes for simpler comparisons.
+        Strategy:
+            If we handle 1 day like a meter,
+            1 hour like a decimeter,
+            and 1 minute like a centimeter,
+            then we can treat days, hours, and minutes
+            like a unified magnitude to simplify comparisons.
     """
     parsed_start = start[1].split(":")
     parsed_end = end[1].split(":")

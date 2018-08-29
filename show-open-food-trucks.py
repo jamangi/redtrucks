@@ -15,12 +15,16 @@ import logistics
 
 class FoodTrucksCommand(cmd.Cmd):
     """
-        Contains the entry point of the command interpreter.
+        Entry point of the command interpreter.
     """
 
     prompt = ("(FoodTrucks) ")
 
     def __init__(self):
+        """
+            Read either foodtruck api or csv for data.
+            Use logistics algorithm to filter for the open trucks.
+        """
         cmd.Cmd.__init__(self)
         self.url = "http://data.sfgov.org/resource/bbb8-hzi6.json"
         self.csv = "backup.csv"
@@ -51,8 +55,7 @@ class FoodTrucksCommand(cmd.Cmd):
         self.data.sort()
 
         self.onecmd("?")
-        print("{:<35}{:<35}".format("NAME", "ADDRESS"))
-        self.print_range(False)
+        self.onecmd("back")
 
     def do_next(self, args):
         """
@@ -74,16 +77,15 @@ class FoodTrucksCommand(cmd.Cmd):
 
     def do_quit(self, args):
         """
-            Quits the console
+            Quit the console
         """
         return True
 
-    def print_range(self, init_newline=True):
+    def print_range(self):
         """
-            Print's up to ten food trucks
+            Print up to ten food trucks
         """
-        if init_newline:
-            print()
+        print("\n{:<35}{:<35}".format("NAME", "ADDRESS"))
         start = self.index
         end = start + 10
         if end > len(self.data):
@@ -96,7 +98,7 @@ class FoodTrucksCommand(cmd.Cmd):
 
     def update_backup(self):
         """
-            Updates backup after successful connection
+            Update backup after successful connection
         """
         try:
             with open(self.csv, 'w', newline='') as csvfile:
