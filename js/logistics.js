@@ -52,6 +52,15 @@ function populate_table(){
     init_table()
     let table = document.getElementById("t1")
 
+    data.sort(function(a, b){
+        let nameA = a.name.toLowerCase(), nameB = b.name.toLowerCase()
+        if (nameA < nameB) //sort ascending
+            return -1
+        if (nameA > nameB)
+            return 1
+        return 0
+    })
+
     if (data.length < 20)
         dummydata()
 
