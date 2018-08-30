@@ -64,7 +64,7 @@ body {
     background: url(../images/truck-icon.png);
     background-repeat: no-repeat;
     background-position: 50% 50%;
-    background-size: 800px;
+    background-size: 100% 110%;
 
     /*border: 1px solid blue;*/
 }
@@ -103,12 +103,30 @@ body {
     border: solid 1px green;
     left: 50%;
     top: 23px;
-    height: 75%;
+    height: 70%;
     width: 46%;
     border-radius: 10px;
     opacity: .1;
     padding: 10px;
     box-sizing: border-box;
+}
+
+#table-container {
+    background: none;
+    position: absolute;
+    border: solid 2px transparent;
+    left: 50%;
+    top: 23px;
+    height: 70%;
+    width: 46%;
+    border-radius: 10px;
+    padding: 10px;
+    box-sizing: border-box;
+    overflow-y: auto;
+}
+
+::-webkit-scrollbar { 
+    display: none; 
 }
 
 footer {
@@ -126,8 +144,22 @@ footer p {
 }
 
 #t1 {
-    position:absolute;
+    /*position:absolute;*/
     /*background-color: var(--pale-yellow);*/
+    color:white;
+    height: 100%;
+    width: 100%;
+    border-radius: 10px;
+    opacity: 1;
+    padding: 10px;
+    box-sizing: border-box;
+
+    font-size: 11px;
+
+}
+
+/*#t1 {
+    position:absolute;
     color:white;
     left: 50%;
     top: 23px;
@@ -140,7 +172,7 @@ footer p {
 
     font-size: 10px;
 
-}
+}*/
 
 table, th, td {
     /*border: 1px solid black;*/

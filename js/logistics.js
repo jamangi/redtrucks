@@ -154,15 +154,8 @@ function is_open(start, end){
 }
 
 function dummydata(){
-    data.push({"name": "offline", "address": "offline"})
-    data.push({"name": "offline", "address": "offline"})
-    data.push({"name": "offline", "address": "offline"})
-    data.push({"name": "offline", "address": "offline"})
-    data.push({"name": "offline", "address": "offline"})
-    data.push({"name": "offline", "address": "offline"})
-    data.push({"name": "offline", "address": "offline"})
-    data.push({"name": "offline", "address": "offline"})
-    data.push({"name": "offline", "address": "offline"})
+    for (let i = 0; i < 20; i++)
+        data.push({"name": "closed", "address": "closed"})
 }
 
 function update_clock(){
