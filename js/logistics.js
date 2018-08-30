@@ -179,7 +179,7 @@ function update_clock(){
     if (second < 10) second = "0" + second
 
     let year = x.getFullYear()
-    let month = x.getMonth()
+    let month = x.getMonth() + 1
     if (month < 10) month = "0" + month
     let monthday = x.getDate()
     if (monthday < 10) monthday = "0" + monthday
