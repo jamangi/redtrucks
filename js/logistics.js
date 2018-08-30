@@ -83,7 +83,6 @@ function populate_table(){
 }
 
 function ajax_call(){
-    data = []
     let callback = populate_table
     let url = "http://data.sfgov.org/resource/bbb8-hzi6.json"
     let xhttp = new XMLHttpRequest();
@@ -91,6 +90,7 @@ function ajax_call(){
         if (this.readyState == 4 && this.status == 200) {
             raw = JSON.parse(this.responseText)
 
+            data = []
             for (let truck of raw) {
                 let start_time = {"dayorder": parseInt(truck.dayorder), "open": truck.start24}
                 let closing_time = {"dayorder": start_time.dayorder, "end": truck.end24}
