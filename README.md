@@ -6,7 +6,9 @@ With this project I hope to show the connective power of a web API. The foodtruc
 
 ## Python Console
 In the Python Console version of this app, a CSV file is used to cache the request, and that cache is relied on if we ever become unable to connect to the food trucks API. The downside to this, is the extra seconds of overhead when turning on the app, as it updates the CSV file. 
-![console](https://github.com/jamangi/redtrucks/blob/master/writeup/images/console.gif)
+
+* ![console](https://github.com/jamangi/redtrucks/blob/master/writeup/images/console.gif)
+
 As you can see, the geographic location of the user is also used to calculate the distance from each truck. 
 
 You'll only need to install requests to run the app. Ideally using python3. 
