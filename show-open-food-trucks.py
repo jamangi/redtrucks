@@ -29,9 +29,22 @@ class FoodTrucksCommand(cmd.Cmd):
         self.url = "http://data.sfgov.org/resource/bbb8-hzi6.json"
         self.csv = "backup.csv"
         self.support = "https://github.com/jamangi/Redtrucks"
+        self.geotest = "http://ipinfo.io/geo"
+        self.location = {"latitude": None, "longitude": None}
+        self.ip = None
         self.raw = []
         self.data = []
         self.index = 0
+
+        location_req = requests.get(self.geotest)
+        if location_req.status_code == 200:
+            x = location_req.json()
+            location = x.get("loc").split(',')
+            self.location = {"latitude": float(location[0]),
+                             "longitude": float(location[1])}
+            self.ip = x.get("ip")
+            print("lat: {}".format(self.location.get("latitude")))
+            print("lon: {}".format(self.location.get("longitude")))
 
         response = requests.get(self.url)
 
@@ -50,7 +63,13 @@ class FoodTrucksCommand(cmd.Cmd):
             if logistics.is_open(start_time, closing_time):
                 name = truck.get("applicant")
                 address = truck.get("location")
-                self.data.append((name, address))
+                my_lat = self.location["latitude"]
+                my_lon = self.location["longitude"]
+                truck_lat = float(truck.get("latitude"))
+                truck_lon = float(truck.get("longitude"))
+                distance = logistics.distance((my_lat, my_lon),
+                                              (truck_lat, truck_lon))
+                self.data.append((name, address, distance, self.ip))
 
         self.data.sort()
 
@@ -75,6 +94,14 @@ class FoodTrucksCommand(cmd.Cmd):
             self.index = 0
         self.print_range()
 
+    def do_miles(self, args):
+        """
+            Sort trucks by distance from our location
+        """
+        self.data.sort(key=lambda datapoint: datapoint[2]['miles'])
+        self.index = 0
+        self.print_range()
+
     def do_quit(self, args):
         """
             Quit the console
@@ -85,7 +112,7 @@ class FoodTrucksCommand(cmd.Cmd):
         """
             Print up to ten food trucks
         """
-        print("\n{:<35}{:<35}".format("NAME", "ADDRESS"))
+        print("\n{:<60}{:<20}{:<20}".format("NAME", "ADDRESS", "MILES"))
         start = self.index
         end = start + 10
         if end > len(self.data):
@@ -93,7 +120,8 @@ class FoodTrucksCommand(cmd.Cmd):
         for i in range(start, end):
             name = self.data[i][0]
             address = self.data[i][1]
-            print("{:<35}{:<35}".format(name, address))
+            miles = self.data[i][2].get("miles")
+            print("{:<60}{:<20}{:<40}".format(name, address, miles))
         print()
 
     def update_backup(self):

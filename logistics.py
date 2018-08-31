@@ -1,7 +1,9 @@
 """
-    Module containing time comparison function.
+    Module containing time and distance comparison functions.
 """
 from datetime import datetime
+from math import sin, cos, sqrt, atan2, radians
+
 
 
 def day_hour_minute():
@@ -66,3 +68,36 @@ def is_open(start, end):
             return True
 
     return False
+
+
+def distance(origin, destination):
+    """
+        Convert coordinates to distance in km and miles.
+    """
+
+    if (origin[0] is None):
+        return ({"km": None, "miles": None})
+
+    # approximate radius of earth in km
+    R = 6373.0
+
+    lat1 = radians(abs(origin[0]))
+    lon1 = radians(abs(origin[1]))
+    lat2 = radians(abs(destination[0]))
+    lon2 = radians(abs(destination[1]))
+
+    dlon = lon2 - lon1
+    dlat = lat2 - lat1
+
+    a = sin(dlat / 2)**2 + cos(lat1) * cos(lat2) * sin(dlon / 2)**2
+    c = 2 * atan2(sqrt(a), sqrt(1 - a))
+
+    distance_km = R * c
+    distance_miles = distance_km * 0.621371
+
+    return ({"km": round(distance_km, 2), "miles": round(distance_miles, 2)})
+
+
+if __name__ == '__main__':
+    import doctest
+    doctest.testmod()
