@@ -54,6 +54,11 @@ function populate_table(){
 
     data.sort(function(a, b){
         let nameA = a.name.toLowerCase(), nameB = b.name.toLowerCase()
+        if (nameA === "closed")
+            return 1
+        if (nameB === "closed")
+            return -1
+        
         if (nameA < nameB) //sort ascending
             return -1
         if (nameA > nameB)
