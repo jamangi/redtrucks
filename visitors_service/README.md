@@ -8,4 +8,4 @@ In this case, the visitor service saves visitor interactions in a database, cont
 
 The power of a web api is in it's connectivity. You can access it from anywhere: the terminal, Python, JavaScript, and even your browser.
 
-* ![javascript](https://github.com/jamangi/redtrucks/blob/master/writeup/images/visitor_service.gif)
+![javascript](https://github.com/jamangi/redtrucks/blob/master/writeup/images/visitor_service.gif)
