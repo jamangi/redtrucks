@@ -24,6 +24,13 @@ function clear_table(){
     table_parent.appendChild(table_new)
 }
 
+function populate_visits() {
+    let myvisits = document.getElementById('my_visits')
+    let allvisits = document.getElementById('all_visitors')
+    myvisits.innerHTML = my_visits
+    allvisits.innerHTML = all_visitors
+}
+
 function next(){
     clear_table()
     init_table()

@@ -28,7 +28,6 @@ function get_trucks(){
 }
 
 function get_geolocation(){
-    // returns lat and lon
     let callback = get_trucks
     let xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
@@ -44,5 +43,40 @@ function get_geolocation(){
     }
 
     xhttp.open("GET", ip_url, true);
+    xhttp.send();
+}
+
+function make_visit(){
+    let callback = get_all_visits
+    let xhttp = new XMLHttpRequest();
+    let make_visit_url = visit_url + "/visit"
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            let info = JSON.parse(this.responseText)
+
+            my_visits = info.visits
+
+            callback()
+        }
+    }
+
+    xhttp.open("GET", make_visit_url, true);
+    xhttp.send();
+}
+
+function get_all_visits(){
+    let callback = populate_visits
+    let xhttp = new XMLHttpRequest();
+    let make_visit_url = visit_url + "/visits"
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            let info = JSON.parse(this.responseText)
+            all_visitors = info.visits
+
+            callback()
+        }
+    }
+
+    xhttp.open("GET", make_visit_url, true);
     xhttp.send();
 }
