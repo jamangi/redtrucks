@@ -147,7 +147,7 @@ class FoodTrucksCommand(cmd.Cmd):
         """
             Print up to ten food trucks
         """
-        print("\n{:<60}{:<20}{:<20}".format("NAME", "ADDRESS", "MILES"))
+        print("\n{:<60}{:<30}{:<20}".format("NAME", "ADDRESS", "MILES"))
         start = self.index
         end = start + 10
         if end > len(self.data):
@@ -156,7 +156,7 @@ class FoodTrucksCommand(cmd.Cmd):
             name = self.data[i][0]
             address = self.data[i][1]
             miles = self.data[i][2].get("miles")
-            print("{:<60}{:<20}{:<40}".format(name, address, miles))
+            print("{:<60}{:<30}{:<40}".format(name, address, miles))
         print()
 
     def update_backup(self):
