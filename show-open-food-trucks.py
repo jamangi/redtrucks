@@ -94,7 +94,15 @@ class FoodTrucksCommand(cmd.Cmd):
             self.index = 0
         self.print_range()
 
-    def do_miles(self, args):
+    def do_sort_by_name(self, args):
+        """
+            Sort trucks by name
+        """
+        self.data.sort()
+        self.index = 0
+        self.print_range()
+
+    def do_sort_by_miles(self, args):
         """
             Sort trucks by distance from our location
         """
