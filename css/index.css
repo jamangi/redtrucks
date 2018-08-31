@@ -38,7 +38,7 @@ body {
 .button {
     height: 30px;
     width: 60px;
-    background: var(--brown);
+    /*background: var(--lavender);*/
 }
 
 .button.all_users {
@@ -48,6 +48,7 @@ body {
     top: 5px;
     padding-left: 8px;
     padding-top: 8px;
+    background: var(--brown);
 }
 
 .panel.container {
@@ -80,7 +81,10 @@ body {
     left: 16%;
     padding-top: 5px;
     padding-left: 10px;
-    opacity: .7;
+    opacity: .5;
+    color: darkred;
+    font-weight: bold;
+    box-sizing: border-box;
 }
 
 .button.back:hover, .button.next:hover{
