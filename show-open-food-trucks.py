@@ -27,6 +27,7 @@ class FoodTrucksCommand(cmd.Cmd):
         """
         cmd.Cmd.__init__(self)
         self.url = "http://data.sfgov.org/resource/bbb8-hzi6.json"
+        self.visit_service = "http://redtruck.services"
         self.csv = "backup.csv"
         self.support = "https://github.com/jamangi/Redtrucks"
         self.geotest = "http://ipinfo.io/geo"
@@ -36,15 +37,26 @@ class FoodTrucksCommand(cmd.Cmd):
         self.data = []
         self.index = 0
 
+        visit_req = requests.get("{}/visit".format(self.visit_service))
+        visit_count = requests.get("{}/visits".format(self.visit_service))
+        all_visitors = requests.get("{}/visitors".format(self.visit_service))
+
+        if (visit_req.status_code == 200
+                and visit_count.status_code == 200
+                and all_visitors.status_code == 200):
+            self.ip = visit_req.json().get("ip")
+            self.my_visits = visit_req.json().get("visits")
+            self.all_visits = visit_count.json().get("visits")
+            self.visitors = all_visitors.json()['visitors']
+
+
         location_req = requests.get(self.geotest)
+
         if location_req.status_code == 200:
             x = location_req.json()
             location = x.get("loc").split(',')
             self.location = {"latitude": float(location[0]),
                              "longitude": float(location[1])}
-            self.ip = x.get("ip")
-            print("lat: {}".format(self.location.get("latitude")))
-            print("lon: {}".format(self.location.get("longitude")))
 
         response = requests.get(self.url)
 
@@ -109,6 +121,21 @@ class FoodTrucksCommand(cmd.Cmd):
         self.data.sort(key=lambda datapoint: datapoint[2]['miles'])
         self.index = 0
         self.print_range()
+
+    def do_visitors(self, args):
+        """
+            See what other machines have used this console app
+        """
+        print()
+        print("Total Visits: {}".format(self.all_visits))
+        print()
+        for visitor in self.visitors:
+            print("IP: {}".format(visitor['ip']))
+            print("Visits: {}".format(visitor['visits']))
+            lastseen = visitor['updated_at'].split("T")[0]
+            print("Last Seen: {}".format(lastseen))
+            print()
+
 
     def do_quit(self, args):
         """
