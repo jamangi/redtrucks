@@ -33,6 +33,9 @@ class FoodTrucksCommand(cmd.Cmd):
         self.geotest = "http://ipinfo.io/geo"
         self.location = {"latitude": None, "longitude": None}
         self.ip = None
+        self.my_visits = 0
+        self.all_visits = 0
+        self.visitors = []
         self.raw = []
         self.data = []
         self.index = 0
