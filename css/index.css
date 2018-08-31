@@ -86,36 +86,40 @@ body {
 }
 
 .button.back, .button.next {
-    top: 63%;
-    left: 16%;
+    top: 89%;
+    left: 55%;
+    color: var(--brown);
 }
 
 .button.name, .button.miles {
-    top: 50%;
-    left: 16%;
+    top: 11%;
+    left: 5%;
 }
 
 #sort {
     position: absolute;
-    top: 51%;
-    left: 8%;
-    opacity: .5;
+    height: 100%;
+    width: 10%;
+    /*border: 1px dotted blue;*/
+    left: 27%;
+    z-index: 1;
 }
 
-#pagination {
+#sort-text {
     position: absolute;
-    top: 63%;
-    left: 10%;
-    opacity: .5;
+    top: 5%;
+    left: 5%;
+    color: var(--brown);
 }
+
 
 
 .button.next {
-    left: 30%;
+    left: 65%;
 }
 
 .button.miles {
-    left: 30%;
+    top: 20%;
 }
 
 .button.back:hover, .button.next:hover, .button.name:hover, .button.miles:hover{
