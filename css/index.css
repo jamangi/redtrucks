@@ -75,10 +75,8 @@ body {
     /*border: 1px solid #A755C2;*/
 }
 
-.button.back, .button.next{
+.button.back, .button.next, .button.name, .button.miles {
     position: absolute;
-    top: 59%;
-    left: 16%;
     padding-top: 5px;
     padding-left: 10px;
     opacity: .5;
@@ -87,16 +85,42 @@ body {
     box-sizing: border-box;
 }
 
-.button.back:hover, .button.next:hover{
-        opacity: 1;
+.button.back, .button.next {
+    top: 63%;
+    left: 16%;
 }
+
+.button.name, .button.miles {
+    top: 50%;
+    left: 16%;
+}
+
+#sort {
+    position: absolute;
+    top: 51%;
+    left: 8%;
+    opacity: .5;
+}
+
+#pagination {
+    position: absolute;
+    top: 63%;
+    left: 10%;
+    opacity: .5;
+}
+
 
 .button.next {
     left: 30%;
 }
 
-.button.back {
+.button.miles {
+    left: 30%;
+}
 
+.button.back:hover, .button.next:hover, .button.name:hover, .button.miles:hover{
+        opacity: 1;
+        cursor: pointer;
 }
 
 #users_button{
@@ -199,6 +223,7 @@ tr {
 }
 
 
-tr:hover th, tr:hover td {
+tr:hover td {
     opacity: 1;
+    cursor: pointer;
 }
