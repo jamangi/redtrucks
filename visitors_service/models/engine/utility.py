@@ -14,7 +14,7 @@ def convert_class(cls, choice="string"):
         if cls is None or cls == "":
             c = None
         elif type(cls) != str:
-            c = cls.__classname__
+            c = cls.__class__.__name__
         else:
             c = cls
         return c
